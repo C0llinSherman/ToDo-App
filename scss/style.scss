@@ -1,0 +1,55 @@
+/* Color Theme Swatches in Hex */
+$red: #D90B1C;
+$yellow: #FAF566;
+$blue: #9ACFDD;
+$tan: #CABAAB;
+$black: #202731;
+;
+
+body{
+    background-color: $tan;
+}
+.navbar {
+    width: 100%;
+    background-color: $blue;
+   
+}
+.content{
+    // margin-top: 20px;
+}
+
+.left{
+    background-color: $yellow;
+    padding-top: 20px;
+    height: 700px;
+h1{font-size: 1.5em;}
+}
+
+.right{
+    background-color: $black;
+    padding-top: 20px;
+    h2{
+        color: white;
+    }
+}
+
+.flex{
+    display: flex;
+    justify-content: space-between;
+}
+.todos {
+    margin-top: 20px;
+}
+.newItem {
+    padding-top: 10px;
+}
+.lists{
+    margin-top: 10px;
+}
+.listItem{
+    display: flex;
+    button{
+        align-self: flex-end;
+        justify-self: flex-end;
+    }
+}
