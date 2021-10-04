@@ -12,6 +12,9 @@
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"
         defer></script>
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/util.js"></script>
+    <!-- <script src="js/todolist.js"></script>
+    <script src="js/todo.js"></script> -->
     <script src="js/script.js"></script>
 </head>
 
@@ -63,7 +66,7 @@
                 <div class="col-3 left">
                     <div class="flex">
                         <h1>List Names</h1>
-                        <button type="button" class="btn btn-outline-secondary">Delete Empty Lists</button>
+                        <button type="button" class="btn btn-outline-secondary">Edit Lists</button>
                     </div>
                     <ul class="list-group lists">
                         <li class="list-group-item active" aria-current="true">An active item</li>
@@ -73,9 +76,10 @@
                         <li class="list-group-item">And a fifth one</li>
                     </ul>
                     <div class="input-group mb-3 newItem">
-                        <input type="text" class="form-control" placeholder=""
+                        <input id="createList" type="text" class="form-control" placeholder=""
                             aria-label="Example text with button addon" aria-describedby="button-addon1">
-                        <button class="btn btn-secondary" type="button" id="button-addon1">Create New List</button>
+                        <button class="btn btn-secondary" type="button" id="button-addon1" onclick="createList()">Create
+                            New List</button>
                     </div>
                 </div>
                 <div class="col-9 right">
@@ -108,8 +112,10 @@
                     </ul>
                     <div class="input-group mb-3 newItem">
                         <input type="text" class="form-control" placeholder=""
-                            aria-label="Example text with button addon" aria-describedby="button-addon1">
-                        <button class="btn btn-secondary" type="button" id="button-addon1">Add List Item</button>
+                            aria-label="Example text with button addon" aria-describedby="button-addon1"
+                            id="createListItem">
+                        <button class="btn btn-secondary" type="button" id="button-addon1"
+                            onclick="createListItem()">Add List Item</button>
                     </div>
                 </div>
             </div>
