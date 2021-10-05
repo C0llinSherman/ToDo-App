@@ -1,6 +1,6 @@
 class ToDoList {
     constructor(name, toDos = []) {
-        this.id = Util.newGuid("toDoList");
+        this.id = Util.newGuid('toDoList');
         this.name = name;
         this.toDos = toDos;
     }

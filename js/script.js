@@ -1,58 +1,51 @@
 const lists = []
 
-
-class ToDoList {
-    constructor(id, name, toDos = []) {
-        this.id = id;
-        this.name = name;
-        this.toDos = toDos;
-    }
-    addToDo(toDo) {
-        this.toDos.push(toDo);
-    }
-    removeToDo(id) {
-        this.toDos = this.toDos.filter(toDo => toDo.id != id);
-    }
-    clearCompleted() {
-        this.toDos = this.toDos.filter(toDo => !toDo.Completed);
-    }
-}
-
-class ToDo {
-    constructor(id, description, completed = false) {
-        this.id = id;
-        this.description = description;
-        this.completed = completed;
-    }
-}
-
-let groceryList = new ToDoList(1, 'shopping');
-
-groceryList.addToDo(new ToDo(1, "bananas"))
-groceryList.addToDo(new ToDo(2, "eggs"))
-groceryList.addToDo(new ToDo(3, "sugar"))
-groceryList.addToDo(new ToDo(4, "apple"))
-
-console.log(groceryList)
-
-lists.push(groceryList)
-console.log(lists)
-
-
+// Default List
+let currentList = new ToDoList('Shopping');
+currentList.addToDo(new ToDo("Bananas"))
+currentList.addToDo(new ToDo("Eggs"))
+currentList.addToDo(new ToDo("Sugar"))
+currentList.addToDo(new ToDo("Apples"))
+lists.push(currentList)
 
 
 function createList() {
     let newList = document.getElementById("createList").value;
-    let list = new ToDoList(Math.random, newList);
+    let list = new ToDoList(newList);
     lists.push(list)
-    console.log(newList);
-    // document.getElementById("createList").value = ""
+    render();
+    document.getElementById("createList").value = ""
 }
-
 function createListItem() {
     let newListItem = document.getElementById("createListItem").value;
-    console.log(newListItem);
+    currentList.addToDo(new ToDo(newListItem))
+    render()
+    document.getElementById("createListItem").value = ""
     // document.getElementById("createListItem").value = ""
 }
 
 
+render()
+function render() {
+    // list name
+    document.getElementById('current-list-name').innerText = currentList.name;
+    // lists
+    let listHtml = '<ul class="list-group">';
+    lists.forEach((lists) => {
+        listHtml += `<li class="list-group-item">${lists.name}</li>`;
+    });
+    listHtml += '</ul>';
+    document.getElementById('lists').innerHTML = listHtml;
+    //list items
+    let listItemsHTML = '<ul class="list-group todos">';
+    currentList.toDos.forEach((ToDo) => {
+        listItemsHTML += `
+        <li class="list-group-item listItem">
+                                <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+                                ${ToDo.description}
+                            </li>
+        `;
+    });
+    listItemsHTML += `</ul>`
+    document.getElementById('listItems').innerHTML = listItemsHTML;
+}
