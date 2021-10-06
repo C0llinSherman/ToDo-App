@@ -11,16 +11,20 @@ lists.push(currentList)
 
 function createList() {
     let newList = document.getElementById("createList").value;
-    let list = new ToDoList(newList);
-    lists.push(list)
-    render();
-    document.getElementById("createList").value = ""
+    if (newList !== "") {
+        let list = new ToDoList(newList);
+        lists.push(list)
+        render();
+        document.getElementById("createList").value = ""
+    }
 }
 function createListItem() {
     let newListItem = document.getElementById("createListItem").value;
-    currentList.addToDo(new ToDo(newListItem))
-    render()
-    document.getElementById("createListItem").value = ""
+    if (newListItem !== "") {
+        currentList.addToDo(new ToDo(newListItem))
+        render()
+        document.getElementById("createListItem").value = ""
+    }
     // document.getElementById("createListItem").value = ""
 }
 
