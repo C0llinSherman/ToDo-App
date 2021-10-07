@@ -22,10 +22,12 @@ currentList = lists[0]
 
 // Set Current List
 
-/* currentList(){
-    
+function changeCurrentList(listNum) {
+    currentList = lists[listNum]
+    console.log(lists[listNum])
+    render()
 }
- */
+
 
 
 // Default List
@@ -43,7 +45,6 @@ function createList() {
 }
 function createListItem() {
     const content = document.getElementById("createListItem").value;
-
     currentList.toDos.push(new ToDo(content))
     render()
     save()
@@ -58,9 +59,14 @@ function render() {
     // document.getElementById('current-list-name').innerText = currentList.name;
     // lists
     let listHtml = '<ul class="list-group">';
-    lists.forEach((lists) => {
-        listHtml += `<li class="list-group-item">${lists.name}</li>`;
-    });
+    for (let i = 0; i < lists.length; i++) {
+        listHtml += `<li class="list-group-item" onclick="changeCurrentList(${i})">${lists[i].name}</li>`;
+
+    }
+
+
+
+
     listHtml += '</ul>';
     document.getElementById('lists').innerHTML = listHtml;
     //list items
