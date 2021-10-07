@@ -1,25 +1,31 @@
+const LISTS = 'lists'
+const existingLists = retrieve();
 let lists = []
 
 
 
-const LISTS = 'lists'
-const existingLists = retrieve();
-if (existingLists) {
-    lists = existingLists;
-} else {
+let currentList
+if (!existingLists) {
     let currentList = new ToDoList('Shopping');
     currentList.addToDo(new ToDo("Bananas"))
     currentList.addToDo(new ToDo("Eggs"))
     currentList.addToDo(new ToDo("Sugar"))
     currentList.addToDo(new ToDo("Apples"))
     lists.push(currentList)
+} else {
+    lists = existingLists;
+    currentList = lists[0]
 }
 
-let currentList = lists[0]
+currentList = lists[0]
 
 
+// Set Current List
 
-
+/* currentList(){
+    
+}
+ */
 
 
 // Default List
@@ -31,19 +37,18 @@ function createList() {
         let list = new ToDoList(newList);
         lists.push(list)
         render();
-        document.getElementById("createList").value = ""
         save()
+        document.getElementById("createList").value = ""
     }
 }
 function createListItem() {
-    let newListItem = document.getElementById("createListItem").value;
-    // if (newListItem !== "") {
-    currentList.addToDo(new ToDo(newListItem))
+    const content = document.getElementById("createListItem").value;
+
+    currentList.toDos.push(new ToDo(content))
     render()
-    document.getElementById("createListItem").value = ""
     save()
-    // }
-    // document.getElementById("createListItem").value = ""
+    document.getElementById("createListItem").value = ""
+
 }
 
 
