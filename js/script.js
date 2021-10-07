@@ -1,12 +1,23 @@
-const lists = []
+let lists = []
 
-// Default List
+
+
+const LISTS = 'lists'
+const existingLists = retrieve();
+
 let currentList = new ToDoList('Shopping');
 currentList.addToDo(new ToDo("Bananas"))
 currentList.addToDo(new ToDo("Eggs"))
 currentList.addToDo(new ToDo("Sugar"))
 currentList.addToDo(new ToDo("Apples"))
 lists.push(currentList)
+
+
+
+
+
+
+// Default List
 
 
 function createList() {
@@ -16,6 +27,7 @@ function createList() {
         lists.push(list)
         render();
         document.getElementById("createList").value = ""
+        save()
     }
 }
 function createListItem() {
@@ -24,6 +36,7 @@ function createListItem() {
         currentList.addToDo(new ToDo(newListItem))
         render()
         document.getElementById("createListItem").value = ""
+        save()
     }
     // document.getElementById("createListItem").value = ""
 }
@@ -52,4 +65,13 @@ function render() {
     });
     listItemsHTML += `</ul>`
     document.getElementById('listItems').innerHTML = listItemsHTML;
+}
+save()
+function save() {
+    localStorage.setItem(LISTS, JSON.stringify(lists));
+
+}
+
+function retrieve() {
+    return JSON.parse(localStorage.getItem(LISTS))
 }
