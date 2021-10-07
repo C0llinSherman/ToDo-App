@@ -4,13 +4,18 @@ let lists = []
 
 const LISTS = 'lists'
 const existingLists = retrieve();
+if (existingLists) {
+    lists = existingLists;
+} else {
+    let currentList = new ToDoList('Shopping');
+    currentList.addToDo(new ToDo("Bananas"))
+    currentList.addToDo(new ToDo("Eggs"))
+    currentList.addToDo(new ToDo("Sugar"))
+    currentList.addToDo(new ToDo("Apples"))
+    lists.push(currentList)
+}
 
-let currentList = new ToDoList('Shopping');
-currentList.addToDo(new ToDo("Bananas"))
-currentList.addToDo(new ToDo("Eggs"))
-currentList.addToDo(new ToDo("Sugar"))
-currentList.addToDo(new ToDo("Apples"))
-lists.push(currentList)
+let currentList = lists[0]
 
 
 
@@ -32,12 +37,12 @@ function createList() {
 }
 function createListItem() {
     let newListItem = document.getElementById("createListItem").value;
-    if (newListItem !== "") {
-        currentList.addToDo(new ToDo(newListItem))
-        render()
-        document.getElementById("createListItem").value = ""
-        save()
-    }
+    // if (newListItem !== "") {
+    currentList.addToDo(new ToDo(newListItem))
+    render()
+    document.getElementById("createListItem").value = ""
+    save()
+    // }
     // document.getElementById("createListItem").value = ""
 }
 
@@ -45,7 +50,7 @@ function createListItem() {
 render()
 function render() {
     // list name
-    document.getElementById('current-list-name').innerText = currentList.name;
+    // document.getElementById('current-list-name').innerText = currentList.name;
     // lists
     let listHtml = '<ul class="list-group">';
     lists.forEach((lists) => {
