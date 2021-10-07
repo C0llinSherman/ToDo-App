@@ -14,9 +14,9 @@ body{
     background-color: $blue;
    
 }
-.content{
+/* .content{
     // margin-top: 20px;
-}
+} */
 
 .left{
     background-color: $yellow;
@@ -48,8 +48,5 @@ h1{font-size: 1.5em;}
 }
 .listItem{
     display: flex;
-    button{
-        align-self: flex-end;
-        justify-self: flex-end;
-    }
+    justify-content: space-between;
 }

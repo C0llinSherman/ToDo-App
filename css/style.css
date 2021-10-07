@@ -8,6 +8,9 @@ body {
   background-color: #9ACFDD;
 }
 
+/* .content{
+    // margin-top: 20px;
+} */
 .left {
   background-color: #FAF566;
   padding-top: 20px;
@@ -44,10 +47,7 @@ body {
 
 .listItem {
   display: flex;
-}
-.listItem button {
-  align-self: flex-end;
-  justify-self: flex-end;
+  justify-content: space-between;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -26,9 +26,8 @@ function changeCurrentList(listNum) {
     currentList = lists[listNum]
     console.log(lists[listNum])
     render()
+    save()
 }
-
-
 
 // Default List
 
@@ -52,11 +51,48 @@ function createListItem() {
 
 }
 
+// Edit Lists
+
+function editLists() {
+    let editHTML = `<button class="btn btn-secondary" type="button" id="button-addon1"
+    onclick="saveEdits()">Save Edits</button>
+    <ul class="list-group todos">`;
+    currentList.toDos.forEach((ToDo) => {
+        editHTML += `
+        <li class="list-group-item listItem">
+                                    <span>
+                                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+                                       <input type="text" value="${ToDo.description}">
+                                    </span>
+                                    <span>
+                                        
+                                        <button class="btn btn-secondary btn-sm" type="button" id="button-addon1"
+                                        onclick="">Delete</button>
+                                    </span>
+                                </li>`;
+    });
+    editHTML += `</ul>`
+    document.getElementById("listItems").innerHTML = editHTML
+}
+
+function rename(toDoNum) {
+    currentList.toDos[toDoNum].description = "rename"
+}
+
+function deleteToDo() {
+    currentList.toDos = currentList.toDos.filter(toDo => toDo.id != id);
+}
+
+function saveEdits() {
+
+    save();
+    render();
+}
 
 render()
 function render() {
     // list name
-    // document.getElementById('current-list-name').innerText = currentList.name;
+    document.getElementById('current-list-name').innerText = currentList.name;
     // lists
     let listHtml = '<ul class="list-group">';
     for (let i = 0; i < lists.length; i++) {
@@ -74,8 +110,10 @@ function render() {
     currentList.toDos.forEach((ToDo) => {
         listItemsHTML += `
         <li class="list-group-item listItem">
+                            <div>
                                 <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
                                 ${ToDo.description}
+                            </div>    
                             </li>
         `;
     });

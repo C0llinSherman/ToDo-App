@@ -85,11 +85,13 @@
                 <div class="col-9 right">
                     <div class="flex">
                         <h2 id="current-list-name">List Name</h2>
-
-                        <button type="button" class="btn btn-outline-secondary">Clear Completed Tasks</button>
+                        <div>
+                            <button type="button" class="btn btn-outline-secondary" onclick="editLists()">Edit</button>
+                            <button type="button" class="btn btn-outline-secondary">Clear Completed Tasks</button>
+                        </div>
                     </div>
                     <div id="listItems">
-                        <ul class="list-group todos">
+                        <ul class="list-group todos" id="todos">
                             <li class="list-group-item listItem">
                                 <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
                                 First checkbox
