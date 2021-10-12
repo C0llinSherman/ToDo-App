@@ -57,31 +57,40 @@ function editLists() {
     let editHTML = `<button class="btn btn-secondary" type="button" id="button-addon1"
     onclick="saveEdits()">Save Edits</button>
     <ul class="list-group todos">`;
-    currentList.toDos.forEach((ToDo) => {
+    console.log(currentList)
+    for (let i = 0; i < currentList.toDos.length; i++) {
         editHTML += `
         <li class="list-group-item listItem">
                                     <span>
                                         <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                                       <input type="text" value="${ToDo.description}">
+                                       <input type="text" value="${currentList.toDos[i].description}">
                                     </span>
                                     <span>
-                                        
                                         <button class="btn btn-secondary btn-sm" type="button" id="button-addon1"
-                                        onclick="">Delete</button>
+                                        onclick="deleteToDo(${i})">Delete</button>
                                     </span>
                                 </li>`;
-    });
+        console.log(currentList)
+
+    }
     editHTML += `</ul>`
     document.getElementById("listItems").innerHTML = editHTML
+
 }
 
 function rename(toDoNum) {
     currentList.toDos[toDoNum].description = "rename"
 }
 
-function deleteToDo() {
-    currentList.toDos = currentList.toDos.filter(toDo => toDo.id != id);
+
+function deleteToDo(num) {
+    console.log("Delete")
+    console.log(num)
+    currentList.toDos.splice(num, 1)
+    save()
+    render()
 }
+
 
 function saveEdits() {
 
