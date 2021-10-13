@@ -66,7 +66,8 @@
                 <div class="col-3 left">
                     <div class="flex">
                         <h1>List Names</h1>
-                        <button type="button" class="btn btn-outline-secondary">Edit Lists</button>
+                        <button type="button" class="btn btn-outline-secondary" onclick="editListGroups()">Edit
+                            Lists</button>
                     </div>
                     <ul class="list-group" id="lists">
                         <li class="list-group-item active" aria-current="true">An active item</li>
@@ -87,7 +88,8 @@
                         <h2 id="current-list-name">List Name</h2>
                         <div>
                             <button type="button" class="btn btn-outline-secondary" onclick="editLists()">Edit</button>
-                            <button type="button" class="btn btn-outline-secondary">Clear Completed Tasks</button>
+                            <button type="button" class="btn btn-outline-secondary" onclick="clearCompleted()">Clear
+                                Completed Tasks</button>
                         </div>
                     </div>
                     <div id="listItems">
