@@ -8,7 +8,7 @@ function editListGroups() {
         <li class="list-group-item listItem">
                                     <span>
                                         
-                                       <input type="text" value="${lists[i].name}">
+                                       ${lists[i].name}
                                     </span>
                                     <span>
                                         <button class="btn btn-secondary btn-sm" type="button" id="button-addon1"
