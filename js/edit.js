@@ -54,10 +54,15 @@ function renameSave(toDoNum) {
     editLists()
 }
 function deleteToDoList(num) {
-    lists.splice(num, 1)
-    currentList = lists[0]
-    save()
-    render()
+    if (lists.length !== 1) {
+        lists.splice(num, 1)
+        currentList = lists[0]
+        save()
+        render()
+    }
+    else {
+        window.alert("Can't delete all lists")
+    }
 }
 function deleteToDo(num) {
     currentList.toDos.splice(num, 1)
